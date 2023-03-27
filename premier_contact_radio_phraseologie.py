@@ -156,7 +156,8 @@ def flying_device_fonction():
 keyboard.add_hotkey('maj', main) 
 keyboard.wait()
 
-#2
+#deuxieme pull request
+
 
 
  
