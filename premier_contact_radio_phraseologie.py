@@ -29,6 +29,8 @@ type_of_flying_device = "" #type d'appareil
 #control
 name_control = False #Permet de savoir si l'utilisateur s'est présenté ou non
 
+place_in_airport = "" #Permet de savoir où se trouve l'utilisateur dans l'aéroport
+
 
 def main():
 
@@ -88,12 +90,8 @@ def identite():
     for element in talker_fr:        #Permet de récupérer le nom de l'utilisateur
         if element == "DE" or element == "DU" or element == "2 ": #Si l'utilisateur dit "de" ou "du" ou "2" on sait qu'il va dire son nom
             break
-        # if element == "bonjour":
-        #     element = ""
-        #     continue
-        # airport += element + " "
-        # print(airport)
-        airport += element + " "
+
+        similar_word = find_similar_word(element, flying_device.aeroportAerodromefrance)
         print(airport)
     
 
@@ -101,14 +99,15 @@ def identite():
 
         if element == "bonjour" or element == "BONJOUR":
             element = ""
-            continue
+            break
 
         if element == "DE" or element == "DU" or element == "2 ":
             after_de_or_du = True
             continue
 
         if after_de_or_du == True:
-            name += element + " "
+            similar_word = find_similar_word(element, flying_device.alphabetOtan)
+            name += similar_word + " "
         print(name)
          
     print("Votre prénom est: {}".format(name) + " et votre aéroport est: {}".format(airport) + " est-ce bien cela ?")
@@ -150,13 +149,26 @@ def flying_device_fonction():
      print("Votre {} est un: {}".format(type_of_flying_device,flying))
      SpeakText("Votre avion est un: {}".format(flying))
 
+def place_in_airport():
+    global place_in_airport
+    global talker_fr
+    
 
+# Outil
+
+def find_similar_word(word, word_list):
+    distances = []
+    for w in word_list:
+        distances.append(distance(w, word))
+    index = distances.index(min(distances))
+    return word_list[index]
+    
 
 
 keyboard.add_hotkey('maj', main) 
 keyboard.wait()
 
-#troisieme pull request
+
 
 
 
