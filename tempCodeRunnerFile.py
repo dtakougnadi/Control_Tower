@@ -1,0 +1,1 @@
+similar_word = find_similar_word(mot, tab)

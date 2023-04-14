@@ -92,6 +92,7 @@ def identite():
             break
 
         similar_word = find_similar_word(element, flying_device.aeroportAerodromefrance)
+        airport = similar_word
         print(airport)
     
 
@@ -101,13 +102,16 @@ def identite():
             element = ""
             break
 
+        if element == "CHARLES":
+            element = ""
+
         if element == "DE" or element == "DU" or element == "2 ":
             after_de_or_du = True
             continue
 
         if after_de_or_du == True:
             similar_word = find_similar_word(element, flying_device.alphabetOtan)
-            name += similar_word + " "
+            name += similar_word + " " 
         print(name)
          
     print("Votre prénom est: {}".format(name) + " et votre aéroport est: {}".format(airport) + " est-ce bien cela ?")
@@ -167,6 +171,9 @@ def find_similar_word(word, word_list):
 
 keyboard.add_hotkey('maj', main) 
 keyboard.wait()
+
+
+# AAA
 
 
 

@@ -2,9 +2,10 @@ from Levenshtein import distance
 
 
 def main():
-    tab = ["paris", "marseille", "aix_en_provence"]
-    mot = "marsle"
+    tab = ["paris", "marseille", "aix_en_provence", "charles de gaulle"]
+    mot = "charles "
     similar_word = find_similar_word(mot, tab)
+    print(mot)
     print(similar_word)
 
 

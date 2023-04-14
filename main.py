@@ -11,8 +11,6 @@ def SpeakText(command):
     engine.runAndWait()
 
 
-SpeakText("Bonjour")
-
 name = ""
 #vehicule = ""
 
